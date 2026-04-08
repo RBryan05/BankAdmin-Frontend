@@ -1,1 +1,40 @@
-<p>dashboard works!</p>
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-lg-12">
+            <h2 class="text-center">Dashboard</h2>
+            <p class="text-muted mb-0 text-center">
+                Bienvenido al panel de administración del banco. Acá puedes ver un resumen de las cuentas, clientes y
+                tipos de cuentas registrados en el sistema.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h4 class="card-title">Total de clientes</h4>
+                    <h3 class="fw-bold text-primary">{{totalClientes}}</h3>
+                    <p class="text-muted mb-0">Clientes registrados en el sistema</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h4 class="card-title">Total de cuentas</h4>
+                    <h3 class="fw-bold text-primary">{{totalCuentas}}</h3>
+                    <p class="text-muted mb-0">Cuentas registrados en el sistema</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h4 class="card-title">Total de tipos de cuentas</h4>
+                    <h3 class="fw-bold text-primary">{{totalTiposCuenta}}</h3>
+                    <p class="text-muted mb-0">Tipos de cuentas registrados en el sistema</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
