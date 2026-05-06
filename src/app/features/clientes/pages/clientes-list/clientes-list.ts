@@ -16,6 +16,8 @@ export class ClientesList {
   constructor(private clientesService: ClientesService) {}
 
   ngOnInit() {
-    this.clientes = this.clientesService.getClientes();
+    this.clientesService.getClientes().subscribe((clientes) => {
+      this.clientes = clientes;
+    });
   }
 }

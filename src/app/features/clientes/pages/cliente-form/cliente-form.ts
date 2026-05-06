@@ -54,13 +54,25 @@ export class ClienteForm {
     const cliente = this.clienteForm.value;
 
     if (this.editando && this.codigoCLiente !== null) {
-      this.clienteService.updateCliente(this.codigoCLiente, cliente);
+      this.clienteService.updateCliente(this.codigoCLiente, cliente).subscribe({
+        next:(resp) => {
+          this.router.navigate(['/clientes']);
+        },
+        error:(message) => {
+          message.error('Error al actualizar el cliente');
+        },
+      });
     } else {
       // Guardar el cliente usando el servicio
-      this.clienteService.saveCliente(cliente);
+      this.clienteService.saveCliente(cliente).subscribe({
+        next: (resp) => {
+          this.router.navigate(['/clientes']);
+        },
+        error: (message) => {
+          message.error('Error al guardar el cliente');
+        }
+      });
     }
-    // Redirigir a la lista de clientes
-    this.router.navigate(['/clientes']);
   }
 
   // Edición de cliente
@@ -74,21 +86,21 @@ export class ClienteForm {
     this.codigoCLiente = Number(codigoParametro);
     this.editando = true;
 
-    const cliente = this.clienteService.getClientePorCodigo(this.codigoCLiente);
+    this.clienteService.getClientePorCodigo(this.codigoCLiente).subscribe((cliente) => {
+      if (!cliente) {
+        this.router.navigate(['/clientes']);
+        return;
+      }
 
-    if (!cliente) {
-      this.router.navigate(['/clientes']);
-      return;
-    }
-
-    // Cargar datos en el formulario
-    this.clienteForm.patchValue({
-      nombre: cliente.nombre,
-      dui: cliente.dui,
-      telefono: cliente.telefono,
-      correo: cliente.correo,
-      direccion: cliente.direccion,
-      estado: cliente.estado
+      // Cargar datos en el formulario
+      this.clienteForm.patchValue({
+        nombre: cliente.nombre,
+        dui: cliente.dui,
+        telefono: cliente.telefono,
+        correo: cliente.correo,
+        direccion: cliente.direccion,
+        estado: cliente.estado
+      });
     });
   }
 
