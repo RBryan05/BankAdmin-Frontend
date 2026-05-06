@@ -6,13 +6,14 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
+            <div class="navbar-nav me-auto">
                 <a class="nav-link" aria-current="page" routerLink="/dashboard" routerLinkActive="active"
                     [routerLinkActiveOptions]="{ exact: true}">Dashboard</a>
                 <a class="nav-link" routerLink="/clientes" routerLinkActive="active">Clientes</a>
                 <a class="nav-link" routerLink="/tipos-cuenta" routerLinkActive="active">Tipos de cuenta</a>
                 <a class="nav-link" routerLink="/cuentas" routerLinkActive="active">Cuentas</a>
             </div>
+            <button class="btn btn-outline-danger" (click)="logout()">Logout</button>
         </div>
     </div>
 </nav>
